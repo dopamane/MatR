@@ -86,6 +86,9 @@ int main(int argc, const char * argv[])
         NSLog(@"%@", [matrix7 getElementAtRow:1 andColumn:2]);
         NSLog(@"\n");
         [[matrix7 getSubMatrixFromRow:1 toRow:3 andFromColumn:1 toColumn:3] print];
+        
+        Matrix *eight_mat = [[Matrix alloc] initWithValue:[NSNumber numberWithDouble:4] andRows:3 byColumns:4];
+        [eight_mat print];
     }
     return 0;
 }

@@ -14,7 +14,7 @@
 @property (readonly) int rows, columns;
 
 -(id) initWithArray:(NSMutableArray *) m andRows:(int) row byColumns:(int) col;
--(id) initWithValue:(NSNumber *) numebr andRows:(int) row byColumns:(int) col;
+-(id) initWithValue:(NSNumber *) number andRows:(int) row byColumns:(int) col;
 
 -(void) print;
 
