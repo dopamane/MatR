@@ -13,8 +13,9 @@
 @property (readonly) NSMutableArray *matrix;
 @property (readonly) int rows, columns;
 
--(id) initWith: (int) rows by: (int) columns with: (NSMutableArray *) m;
--(id) initValue: (int) rows by: (int) columns value: (NSNumber *) number;
+-(id) initWithArray:(NSMutableArray *) m andRows:(int) row byColumns:(int) col;
+-(id) initWithValue:(NSNumber *) numebr andRows:(int) row byColumns:(int) col;
+
 -(void) print;
 
 -(Matrix *) insertColumn: (NSMutableArray *) column atColumnIndex:(int) index;

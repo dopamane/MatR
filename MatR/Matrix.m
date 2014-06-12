@@ -12,7 +12,7 @@
 
 @synthesize matrix, rows, columns;
 
--(id) initWith: (int) row by: (int) col with: (NSMutableArray *) m
+-(id) initWithArray:(NSMutableArray *) m andRows:(int) row byColumns: (int) col
 {
     if (self = [super init])
     {
@@ -30,7 +30,7 @@
     return self;
 }
 
--(id) initValue: (int) row by: (int) col value: (NSNumber *) number
+-(id) initWithValue:(NSNumber *) number andRows:(int)row byColumns:(int)col
 {
     if (self = [super init])
     {
@@ -63,7 +63,7 @@
 {
     if (index <= columns)
     {
-        Matrix *temp_mat = [[Matrix alloc] initValue: rows by:(columns+1) value:0];
+        Matrix *temp_mat = [[Matrix alloc] initWithValue:0 andRows:rows byColumns:(columns+1)];
         for (int r = 0; r < rows; r++)
         {
             for (int c = 0, t=0; c < columns+1; c++)
@@ -91,7 +91,7 @@
 {
     if (index <= rows)
     {
-        Matrix *temp_mat = [[Matrix alloc] initValue: (rows+1) by: columns value:0];
+        Matrix *temp_mat = [[Matrix alloc] initWithValue:0 andRows:(rows+1) byColumns:columns];
         for (int r = 0; r < rows+1; r++)
         {
             for (int c = 0; c < columns; c++)
@@ -139,7 +139,7 @@
                 [[temp_mat objectAtIndex:r] addObject:[NSNumber numberWithDouble:([num1 doubleValue] + [num2 doubleValue])]];
             }
         }
-        return [[Matrix alloc] initWith: rows by: columns with:temp_mat];
+        return [[Matrix alloc] initWithArray:temp_mat andRows:rows byColumns:columns];
     }
     return nil;
 }
@@ -151,7 +151,7 @@
 
 -(Matrix *) addScalar:(NSNumber *) scalar
 {
-    return [self addMatrix:[[Matrix alloc] initValue: rows by: columns value:[NSNumber numberWithDouble:[scalar doubleValue]]]];
+    return [self addMatrix:[[Matrix alloc] initWithValue:[NSNumber numberWithDouble:[scalar doubleValue]] andRows:rows byColumns:columns]];
 }
 
 -(Matrix *) subtractScalar:(NSNumber *) scalar
@@ -172,7 +172,8 @@
             [[temp_mat objectAtIndex:r] addObject:result];
         }
     }
-    return [[Matrix alloc] initWith:rows by:columns with:temp_mat];
+    //return [[Matrix alloc] initWith:rows by:columns with:temp_mat];
+    return [[Matrix alloc] initWithArray:temp_mat andRows:rows byColumns:columns];
 }
 
 -(Matrix *) divideScalar:(NSNumber *) scalar
@@ -200,7 +201,7 @@
                 [[temp_mat objectAtIndex:r]addObject:[NSNumber numberWithDouble:[sum doubleValue]]];
             }
         }
-        return [[Matrix alloc] initWith: rows by:[mat columns] with: temp_mat];
+        return [[Matrix alloc] initWithArray:temp_mat andRows:rows byColumns:[mat columns]];
     }
     return nil;
 }
@@ -217,14 +218,14 @@
             NSNumber *value = [NSNumber numberWithDouble:[[self getElementAtRow:r andColumn:c]doubleValue]];
             [[temp_mat objectAtIndex:c] insertObject:value atIndex:r];
         }
-    return [[Matrix alloc] initWith: columns by: rows with: temp_mat];
+    return [[Matrix alloc] initWithArray:temp_mat andRows:columns byColumns:rows];
 }
 
 -(Matrix *) getColumnAtIndex: (int) index
 {
     if (index >= 0 && index < columns)
     {
-        Matrix *temp_mat = [[Matrix alloc] initValue: rows by:1 value:0];
+        Matrix *temp_mat = [[Matrix alloc] initWithValue:0 andRows:rows byColumns:1];
         for (int r = 0; r < rows; r++)
             [[[temp_mat matrix] objectAtIndex:r] replaceObjectAtIndex:0 withObject:[NSNumber numberWithDouble:[[self getElementAtRow:r andColumn:index]doubleValue]]];
         return temp_mat;
@@ -236,7 +237,7 @@
 {
     if (index >= 0 && index < rows)
     {
-        Matrix *temp_mat = [[Matrix alloc] initValue: 1 by: columns value:0];
+        Matrix *temp_mat = [[Matrix alloc] initWithValue:0 andRows:1 byColumns:columns];
         for (int c = 0; c < columns; c++)
             [[[temp_mat matrix] objectAtIndex:0] replaceObjectAtIndex:c withObject:[NSNumber numberWithDouble:[[self getElementAtRow:index andColumn:c]doubleValue]]];
         return temp_mat;
@@ -248,7 +249,7 @@
 {
     if (r2 > r1 && c2 > c1)
     {
-        Matrix *temp_mat = [[Matrix alloc] initValue:(r2-r1) by:(c2-c1) value:0];
+        Matrix *temp_mat = [[Matrix alloc] initWithValue:0 andRows:(r2-r1) byColumns:(c2-c1)];
         for (int r = r1; r < r2; r++)
             for (int c = c1; c < c2; c++)
                 [temp_mat setElementAtRow:(r-r1) andColumn:(c-c1) withObject:[self getElementAtRow:r andColumn:c]];
