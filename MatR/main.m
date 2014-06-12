@@ -24,7 +24,8 @@ int main(int argc, const char * argv[])
         for (int i = 0; i < rows; i++)
             [m1 addObject: row1];
         
-        Matrix *matrix1 = [[Matrix alloc] initWith: rows by: cols with: m1];
+        //Matrix *matrix1 = [[Matrix alloc] initWith: rows by: cols with: m1];
+        Matrix *matrix1 = [[Matrix alloc] initWithArray:m1 andRows:rows byColumns:cols];
         [matrix1 print];
         
         NSLog(@"\n");
@@ -36,7 +37,7 @@ int main(int argc, const char * argv[])
         for (int i = 0; i < rows; i++)
             [m2 addObject: row2];
         
-        Matrix *matrix2 = [[Matrix alloc] initWith:rows by:cols with:m2];
+        Matrix *matrix2 = [[Matrix alloc] initWithArray:m2 andRows:rows byColumns:cols];
         [[[matrix2 matrix] objectAtIndex:1] replaceObjectAtIndex:2 withObject:[NSNumber numberWithDouble:16]];
         [matrix2 print];
         
@@ -47,11 +48,13 @@ int main(int argc, const char * argv[])
         
         NSLog(@"\n");
         
-        Matrix *matrix4 = [[Matrix alloc] initValue: 3 by: 2 value:[NSNumber numberWithInteger:2]];
+        //Matrix *matrix4 = [[Matrix alloc] initValue: 3 by: 2 value:[NSNumber numberWithInteger:2]];
+        Matrix *matrix4 = [[Matrix alloc] initWithValue:[NSNumber numberWithInteger:2] andRows:3 byColumns:2];
         [matrix4 print];
         NSLog(@"\n");
         
-        Matrix *matrix5 = [[Matrix alloc] initValue: 2 by: 4 value:[NSNumber numberWithInteger:4]];
+        //Matrix *matrix5 = [[Matrix alloc] initValue: 2 by: 4 value:[NSNumber numberWithInteger:4]];
+        Matrix *matrix5 = [[Matrix alloc] initWithValue:[NSNumber numberWithDouble:4] andRows:2 byColumns:4];
         [matrix5 print];
         NSLog(@"\n");
         
