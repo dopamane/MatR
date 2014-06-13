@@ -39,3 +39,65 @@ Matrix *matrix = [[Matrix alloc] initWithValue:[NSNumber numberWithDouble:5] and
 5 5 5 5
 */
 ```
+
+####Supported Matrix Operations:
+###Scalar Addition
+```Objective-C
+Matrix* matrix = [[Matrix alloc] initWithValue:[NSNumber numberWithDouble:3] andRows:4 byColumns:3];
+NSNumber *scalar = [NSNumber numberWithDouble:2];
+Matrix *result = [matrix addScalar:scalar];
+/*Result:
+5 5 5
+5 5 5
+5 5 5
+5 5 5
+*/
+```
+###Scalar Subtraction
+```Objective-C
+Matrix* matrix = [[Matrix alloc] initWithValue:[NSNumber numberWithDouble:3] an$
+NSNumber *scalar = [NSNumber numberWithDouble:2];
+Matrix *result = [matrix subtractScalar:scalar];
+/*Result:
+1 1 1
+1 1 1
+1 1 1
+1 1 1
+*/
+``` 
+###Scalar Multiplication
+```Objective-C
+Matrix* matrix = [[Matrix alloc] initWithValue:[NSNumber numberWithDouble:3] an$
+NSNumber *scalar = [NSNumber numberWithDouble:2];
+Matrix *result = [matrix multiplyScalar:scalar];
+/*Result:
+6 6 6
+6 6 6
+6 6 6
+6 6 6
+*/
+``` 
+###Scalar Division
+```Objective-C
+Matrix* matrix = [[Matrix alloc] initWithValue:[NSNumber numberWithDouble:3] an$
+NSNumber *scalar = [NSNumber numberWithDouble:2];
+Matrix *result = [matrix divideScalar:scalar];
+/*Result:
+1.5 1.5 1.5
+1.5 1.5 1.5
+1.5 1.5 1.5
+1.5 1.5 1.5
+*/
+``` 
+###Matrix Addition
+```Objective-C
+Matrix *m1 = [[Matrix alloc] initWithValue:[NSNumber numberWithDouble:4] andRows:3 byColumns:3];
+Matrix *m2 = [[Matrix alloc] initWithValue:[NSNumber numberWithDouble:2] andRows:3 byColumns:3];
+Matrix *result = [m1 addMatrix:m2];
+/*Result:
+6 6 6
+6 6 6
+6 6 6
+*/
+```
+
