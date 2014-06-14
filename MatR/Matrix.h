@@ -15,6 +15,7 @@
 
 -(id) initWithArray:(NSMutableArray *) m andRows:(int) row byColumns:(int) col;
 -(id) initWithValue:(NSNumber *) number andRows:(int) row byColumns:(int) col;
+-(id) initWithContentsFromFile:(NSString *) filePath;
 
 -(void) print;
 
