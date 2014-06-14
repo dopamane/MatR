@@ -34,6 +34,7 @@
 		01434D5119491EF200E61E18 /* MatR.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = MatR.1; sourceTree = "<group>"; };
 		01434D5B1949240500E61E18 /* Matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Matrix.h; sourceTree = "<group>"; };
 		01434D5C1949240500E61E18 /* Matrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Matrix.m; sourceTree = "<group>"; };
+		014EA279194C874800EDA9D6 /* matrix.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = matrix.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +79,7 @@
 			children = (
 				01434D4D19491EF200E61E18 /* main.m */,
 				01434D5119491EF200E61E18 /* MatR.1 */,
+				014EA279194C874800EDA9D6 /* matrix.txt */,
 				01434D4F19491EF200E61E18 /* Supporting Files */,
 				01434D5B1949240500E61E18 /* Matrix.h */,
 				01434D5C1949240500E61E18 /* Matrix.m */,
@@ -259,6 +261,7 @@
 				01434D5719491EF200E61E18 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
