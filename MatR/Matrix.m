@@ -47,6 +47,33 @@
     return self;
 }
 
+-(id) initWithContentsFromFile:(NSString *)filePath
+{
+    if (self = [super init])
+    {
+        NSString *fileContents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:NULL];
+        NSArray *allLinedStrings = [fileContents componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+        
+        NSLog(@"%@", fileContents);
+        
+        matrix = [[NSMutableArray alloc] initWithCapacity:[allLinedStrings count]];
+        
+        for (int i = 0; i < [allLinedStrings count]; i++)
+        {
+            NSString *line = [allLinedStrings objectAtIndex:i];
+            NSArray *comps = [line componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+            [matrix addObject:[NSMutableArray arrayWithCapacity:[comps count]]];
+            for (int j = 0; j < [comps count]; j++)
+            {
+                [[matrix objectAtIndex:i] addObject:[NSNumber numberWithDouble:[[comps objectAtIndex:j] doubleValue]]];
+            }
+        }
+        rows = (int) [matrix count];
+        columns = (int) [[matrix objectAtIndex:0] count];
+    }
+    return self;
+}
+
 -(void) print
 {
     NSMutableString *row_string = [[NSMutableString alloc] initWithCapacity: columns];
