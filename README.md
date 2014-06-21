@@ -70,7 +70,7 @@ Matrix *result = [matrix addScalar:scalar];
 ```
 ####Scalar Subtraction
 ```Objective-C
-Matrix* matrix = [[Matrix alloc] initWithValue:[NSNumber numberWithDouble:3] an$
+Matrix* matrix = [[Matrix alloc] initWithValue:[NSNumber numberWithDouble:3] andRows:4 byColumns:3];
 NSNumber *scalar = [NSNumber numberWithDouble:2];
 Matrix *result = [matrix subtractScalar:scalar];
 /*Result:
@@ -82,7 +82,7 @@ Matrix *result = [matrix subtractScalar:scalar];
 ``` 
 ####Scalar Multiplication
 ```Objective-C
-Matrix* matrix = [[Matrix alloc] initWithValue:[NSNumber numberWithDouble:3] an$
+Matrix* matrix = [[Matrix alloc] initWithValue:[NSNumber numberWithDouble:3] andRows:4 byColumns:3];
 NSNumber *scalar = [NSNumber numberWithDouble:2];
 Matrix *result = [matrix multiplyScalar:scalar];
 /*Result:
@@ -94,7 +94,7 @@ Matrix *result = [matrix multiplyScalar:scalar];
 ``` 
 ####Scalar Division
 ```Objective-C
-Matrix* matrix = [[Matrix alloc] initWithValue:[NSNumber numberWithDouble:3] an$
+Matrix* matrix = [[Matrix alloc] initWithValue:[NSNumber numberWithDouble:3] andRows:4 byColumns:3];
 NSNumber *scalar = [NSNumber numberWithDouble:2];
 Matrix *result = [matrix divideScalar:scalar];
 /*Result:
