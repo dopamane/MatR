@@ -89,6 +89,14 @@ int main(int argc, const char * argv[])
         
         Matrix *eight_mat = [[Matrix alloc] initWithValue:[NSNumber numberWithDouble:4] andRows:3 byColumns:4];
         [eight_mat print];
+        
+        NSLog(@"\n");
+        
+        Matrix *matrix9 = [[Matrix alloc] initWithContentsFromFile:@"/Users/davidcox95/XcodeProjects/MatR/MatR/matrix.txt"];
+        [matrix9 print];
+        
+        NSLog(@"\n");
+        [[matrix9 multiplyScalar:[NSNumber numberWithDouble:0.5]] print];
     }
     return 0;
 }
