@@ -27,7 +27,7 @@
 3. Import the Matrix.h header file into your code
 
 ####Creating a Matrix in MatR:
-Currently there are three options to create a matrix.
+Currently there are two options to create a matrix.
 The first option is to create a matrix of NSNumbers of the same value:
 ```Objective-C
 /*Create a 3x4 Matrix of the value 5*/
@@ -40,8 +40,22 @@ Matrix *matrix = [[Matrix alloc] initWithValue:[NSNumber numberWithDouble:5] and
 */
 ```
 
-####Supported Matrix Operations:
-###Scalar Addition
+The second option is to create a matrix of NSNumbers from a .txt file:
+```Objective-C
+/*Text file
+2 3 4 5
+1 2 3 4
+6 7 8 9
+*/
+
+/* Create matrix based on text file at location @"filepath" */
+Matrix* matrix = [[Matrix alloc] initWithContentsFromFile:filepath];
+
+/*matrix now contains the same matrix defined in the text file*/
+```
+
+###Supported Matrix Operations:
+####Scalar Addition
 ```Objective-C
 Matrix* matrix = [[Matrix alloc] initWithValue:[NSNumber numberWithDouble:3] andRows:4 byColumns:3];
 NSNumber *scalar = [NSNumber numberWithDouble:2];
@@ -53,7 +67,7 @@ Matrix *result = [matrix addScalar:scalar];
 5 5 5
 */
 ```
-###Scalar Subtraction
+####Scalar Subtraction
 ```Objective-C
 Matrix* matrix = [[Matrix alloc] initWithValue:[NSNumber numberWithDouble:3] an$
 NSNumber *scalar = [NSNumber numberWithDouble:2];
@@ -65,7 +79,7 @@ Matrix *result = [matrix subtractScalar:scalar];
 1 1 1
 */
 ``` 
-###Scalar Multiplication
+####Scalar Multiplication
 ```Objective-C
 Matrix* matrix = [[Matrix alloc] initWithValue:[NSNumber numberWithDouble:3] an$
 NSNumber *scalar = [NSNumber numberWithDouble:2];
@@ -77,7 +91,7 @@ Matrix *result = [matrix multiplyScalar:scalar];
 6 6 6
 */
 ``` 
-###Scalar Division
+####Scalar Division
 ```Objective-C
 Matrix* matrix = [[Matrix alloc] initWithValue:[NSNumber numberWithDouble:3] an$
 NSNumber *scalar = [NSNumber numberWithDouble:2];
@@ -89,7 +103,7 @@ Matrix *result = [matrix divideScalar:scalar];
 1.5 1.5 1.5
 */
 ``` 
-###Matrix Addition
+####Matrix Addition
 ```Objective-C
 Matrix *m1 = [[Matrix alloc] initWithValue:[NSNumber numberWithDouble:4] andRows:3 byColumns:3];
 Matrix *m2 = [[Matrix alloc] initWithValue:[NSNumber numberWithDouble:2] andRows:3 byColumns:3];
