@@ -130,3 +130,21 @@ result = [m4 multiplyMatrix:m2];
 */
 ```
 
+####Matrix Transposition:
+```Objective-C
+Matrix *matrix = [[Matrix alloc] initWithContentsFromFile:@"yourPathToFile"];
+/*Before:
+5 6 7 8
+3 4 5 6
+1 2 3 4
+*/
+
+Matrix *result = [matrix transpose];
+/*Result:
+5 3 1
+6 4 2
+7 5 3
+8 6 4
+*/
+```
+
