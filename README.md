@@ -49,6 +49,7 @@ The second option is to create a matrix of NSNumbers from a .txt file:
 */
 
 /* Create matrix based on text file at location @"filepath" */
+/* WARNING: MUST USE FULL FILE PATH e.g. /Users/davidcox95/XcodeProjects/MatR/MatR/matrix.txt*/
 Matrix* matrix = [[Matrix alloc] initWithContentsFromFile:filepath];
 
 /*matrix now contains the same matrix defined in the text file*/
