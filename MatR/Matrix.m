@@ -54,7 +54,6 @@
         NSString *fileContents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:NULL];
         NSArray *allLinedStrings = [fileContents componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
         
-        NSLog(@"%@", fileContents);
         
         matrix = [[NSMutableArray alloc] initWithCapacity:[allLinedStrings count]];
         
