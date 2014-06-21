@@ -56,7 +56,7 @@ Matrix* matrix = [[Matrix alloc] initWithContentsFromFile:filepath];
 ```
 
 ###Supported Matrix Operations:
-####Scalar Addition
+####Scalar Addition, Subtraction, Multiplication, and Division:
 ```Objective-C
 Matrix* matrix = [[Matrix alloc] initWithValue:[NSNumber numberWithDouble:3] andRows:4 byColumns:3];
 NSNumber *scalar = [NSNumber numberWithDouble:2];
@@ -67,36 +67,27 @@ Matrix *result = [matrix addScalar:scalar];
 5 5 5
 5 5 5
 */
-```
-####Scalar Subtraction
-```Objective-C
-Matrix* matrix = [[Matrix alloc] initWithValue:[NSNumber numberWithDouble:3] andRows:4 byColumns:3];
-NSNumber *scalar = [NSNumber numberWithDouble:2];
-Matrix *result = [matrix subtractScalar:scalar];
+
+scalar = [NSNumber numberWithDouble:2];
+result = [matrix subtractScalar:scalar];
 /*Result:
 1 1 1
 1 1 1
 1 1 1
 1 1 1
-*/
-``` 
-####Scalar Multiplication
-```Objective-C
-Matrix* matrix = [[Matrix alloc] initWithValue:[NSNumber numberWithDouble:3] andRows:4 byColumns:3];
-NSNumber *scalar = [NSNumber numberWithDouble:2];
-Matrix *result = [matrix multiplyScalar:scalar];
+*/ 
+
+scalar = [NSNumber numberWithDouble:2];
+result = [matrix multiplyScalar:scalar];
 /*Result:
 6 6 6
 6 6 6
 6 6 6
 6 6 6
 */
-``` 
-####Scalar Division
-```Objective-C
-Matrix* matrix = [[Matrix alloc] initWithValue:[NSNumber numberWithDouble:3] andRows:4 byColumns:3];
-NSNumber *scalar = [NSNumber numberWithDouble:2];
-Matrix *result = [matrix divideScalar:scalar];
+
+scalar = [NSNumber numberWithDouble:2];
+result = [matrix divideScalar:scalar];
 /*Result:
 1.5 1.5 1.5
 1.5 1.5 1.5
