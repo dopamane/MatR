@@ -309,12 +309,27 @@
     return nil;
 }
 
+-(NSNumber *) meanAtRowIndex:(int)index
+{
+    double size = [[self getRowAtIndex:index] columns];
+    double mean = [[self sumRowAtIndex:index]doubleValue]/size;
+    return [NSNumber numberWithDouble:mean];
+}
+
+-(NSNumber *) meanAtColumnIndex:(int)index
+{
+    double size = [[self getColumnAtIndex:index] rows];
+    double mean = [[self sumColumnAtIndex:index]doubleValue]/size;
+    return [NSNumber numberWithDouble:mean];
+}
+
 -(NSNumber *) getElementAtRow:(int) row andColumn:(int) column
 {
     if (row >= 0 && row < rows && column >= 0 && column < columns)
         return [[matrix objectAtIndex:row]objectAtIndex:column];
     return nil;
 }
+
 
 -(void) setElementAtRow:(int) row andColumn:(int) column withObject:(NSNumber *) number
 {
