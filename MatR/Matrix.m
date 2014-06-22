@@ -247,6 +247,20 @@
     return [[Matrix alloc] initWithArray:temp_mat andRows:columns byColumns:rows];
 }
 
+-(Matrix *) squareElements
+{
+    Matrix *temp = [[Matrix alloc] initWithValue:[NSNumber numberWithDouble:1] andRows:rows byColumns:columns];
+    for (int r = 0; r < [self rows]; r++)
+    {
+        for (int c = 0; c < [self columns]; c++)
+        {
+            NSNumber *sq = [NSNumber numberWithDouble:[[self getElementAtRow:r andColumn:c] doubleValue] * [[self getElementAtRow:r andColumn:c] doubleValue]];
+            [temp setElementAtRow:r andColumn:c withObject:sq];
+        }
+    }
+    return temp;
+}
+
 -(Matrix *) getColumnAtIndex: (int) index
 {
     if (index >= 0 && index < columns)
@@ -311,16 +325,47 @@
 
 -(NSNumber *) meanAtRowIndex:(int)index
 {
-    double size = [[self getRowAtIndex:index] columns];
-    double mean = [[self sumRowAtIndex:index]doubleValue]/size;
-    return [NSNumber numberWithDouble:mean];
+    if (index >= 0 && index < rows)
+    {
+        double size = [[self getRowAtIndex:index] columns];
+        double mean = [[self sumRowAtIndex:index]doubleValue]/size;
+        return [NSNumber numberWithDouble:mean];
+    }
+    return nil;
 }
 
 -(NSNumber *) meanAtColumnIndex:(int)index
 {
-    double size = [[self getColumnAtIndex:index] rows];
-    double mean = [[self sumColumnAtIndex:index]doubleValue]/size;
-    return [NSNumber numberWithDouble:mean];
+    if (index >= 0 && index < columns)
+    {
+        double size = [[self getColumnAtIndex:index] rows];
+        double mean = [[self sumColumnAtIndex:index]doubleValue]/size;
+        return [NSNumber numberWithDouble:mean];
+    }
+    return nil;
+}
+
+-(NSNumber *) standardDevAtRowIndex:(int)index
+{
+    if (index >= 0 && index < rows)
+    {
+        Matrix *dif = [[[self getRowAtIndex:index] subtractScalar:[self meanAtRowIndex:index]] squareElements];
+        double avg = [[dif sumRowAtIndex:0] doubleValue] / [dif columns];
+        return [NSNumber numberWithDouble:(sqrt(avg))];
+        
+    }
+    return nil;
+}
+
+-(NSNumber *) standardDevAtColumnIndex:(int)index
+{
+    if (index >= 0 && index < columns)
+    {
+        Matrix *dif = [[[self getColumnAtIndex:index] subtractScalar:[self meanAtColumnIndex:index]] squareElements];
+        double avg = [[dif sumColumnAtIndex:0] doubleValue] / [dif rows];
+        return [NSNumber numberWithDouble:(sqrt(avg))];
+    }
+    return nil;
 }
 
 -(NSNumber *) getElementAtRow:(int) row andColumn:(int) column
