@@ -32,6 +32,7 @@
 -(Matrix *) multiplyMatrix: (Matrix *) mat;
 
 -(Matrix *) transpose;
+-(Matrix *) squareElements;
 -(Matrix *) getColumnAtIndex:(int) index;
 -(Matrix *) getRowAtIndex:(int) index;
 -(Matrix *) getSubMatrixFromRow:(int) r1 toRow:(int)r2 andFromColumn:(int) c1 toColumn:(int) c2;
@@ -40,6 +41,8 @@
 -(NSNumber *) sumColumnAtIndex:(int) index;
 -(NSNumber *) meanAtRowIndex:(int) index;
 -(NSNumber *) meanAtColumnIndex:(int) index;
+-(NSNumber *) standardDevAtRowIndex:(int) index;
+-(NSNumber *) standardDevAtColumnIndex:(int) index;
 
 -(void) setElementAtRow:(int) row andColumn: (int) column withObject:(NSNumber *) number;
 -(NSNumber *) getElementAtRow: (int) row andColumn: (int) column;
