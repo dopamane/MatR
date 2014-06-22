@@ -38,8 +38,11 @@
 
 -(NSNumber *) sumRowAtIndex:(int) index;
 -(NSNumber *) sumColumnAtIndex:(int) index;
--(NSNumber *) getElementAtRow: (int) row andColumn: (int) column;
+-(NSNumber *) meanAtRowIndex:(int) index;
+-(NSNumber *) meanAtColumnIndex:(int) index;
 
 -(void) setElementAtRow:(int) row andColumn: (int) column withObject:(NSNumber *) number;
+-(NSNumber *) getElementAtRow: (int) row andColumn: (int) column;
+
 
 @end
