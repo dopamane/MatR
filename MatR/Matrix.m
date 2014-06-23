@@ -301,6 +301,30 @@
     return [[Matrix alloc] initWithArray:temp_mat andRows:columns byColumns:rows];
 }
 
+-(Matrix *) inverse
+{
+    if (rows == columns)
+    {
+        Matrix *cofactors = [[Matrix alloc] initWithValue:[NSNumber numberWithDouble:0] andRows:rows byColumns:columns];
+        NSNumber *det = [self getDeterminant];
+        
+        if ([det doubleValue] == 0)
+            return nil;
+        
+        for (int r = 0; r < rows; r++)
+        {
+            for (int c = 0; c < columns; c++)
+            {
+                NSNumber *subdet = [[[self removeColumnAtIndex:c] removeRowAtIndex:r] getDeterminant];
+                subdet = [NSNumber numberWithDouble:(pow(-1, r+c)*[subdet doubleValue])];
+                [cofactors setElementAtRow:r andColumn:c withObject:subdet];
+            }
+        }
+        return [[cofactors transpose] multiplyScalar:[NSNumber numberWithDouble:(1/[det doubleValue])]];
+    }
+    return nil;
+}
+
 -(Matrix *) squareElements
 {
     Matrix *temp = [[Matrix alloc] initWithValue:[NSNumber numberWithDouble:1] andRows:rows byColumns:columns];
@@ -424,9 +448,9 @@
 
 -(NSNumber *) getDeterminant
 {
-    /*if (rows == columns)
+    if (rows == columns)
     {
-        *//*Base case 2x2 matrix*//*
+        /*Base case 2x2 matrix*/
         if (rows == 2 && columns == 2)
         {
             double a = [[self getElementAtRow:0 andColumn:0]doubleValue];
@@ -443,16 +467,19 @@
             //add
             if (c % 2 == 0)
             {
-                det += [[self getElementAtRow:0 andColumn:c] doubleValue] * [[self getSubMatrixFromRow:<#(int)#> toRow:<#(int)#> andFromColumn:<#(int)#> toColumn:<#(int)#>]getDeterminant];
+                Matrix *temp = [[self removeColumnAtIndex:c] removeRowAtIndex:0];
+                det += [[self getElementAtRow:0 andColumn:c] doubleValue] * [[temp getDeterminant]doubleValue];
             }
             //subtract
             else
             {
-                
+                Matrix *temp = [[self removeColumnAtIndex:c] removeRowAtIndex:0];
+                det -= [[self getElementAtRow:0 andColumn:c] doubleValue] * [[temp getDeterminant] doubleValue];
             }
         }
+        return [NSNumber numberWithDouble:det];
         
-    }*/
+    }
     return nil;
 }
 

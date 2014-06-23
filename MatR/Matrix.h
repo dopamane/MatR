@@ -34,6 +34,7 @@
 -(Matrix *) multiplyMatrix: (Matrix *) mat;
 
 -(Matrix *) transpose;
+-(Matrix *) inverse;
 -(Matrix *) squareElements;
 -(Matrix *) getColumnAtIndex:(int) index;
 -(Matrix *) getRowAtIndex:(int) index;
