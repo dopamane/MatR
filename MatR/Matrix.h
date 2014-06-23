@@ -21,6 +21,8 @@
 
 -(Matrix *) insertColumn: (NSMutableArray *) column atColumnIndex:(int) index;
 -(Matrix *) insertRow: (NSMutableArray *) row atRowIndex:(int) index;
+-(Matrix *) removeColumnAtIndex:(int) index;
+-(Matrix *) removeRowAtIndex:(int) index;
 
 -(Matrix *) addScalar: (NSNumber *) scalar;
 -(Matrix *) subtractScalar: (NSNumber *) scalar;
@@ -43,6 +45,7 @@
 -(NSNumber *) meanAtColumnIndex:(int) index;
 -(NSNumber *) standardDevAtRowIndex:(int) index;
 -(NSNumber *) standardDevAtColumnIndex:(int) index;
+-(NSNumber *) getDeterminant;
 
 -(void) setElementAtRow:(int) row andColumn: (int) column withObject:(NSNumber *) number;
 -(NSNumber *) getElementAtRow: (int) row andColumn: (int) column;

@@ -149,6 +149,60 @@
     
 }
 
+-(Matrix *) removeRowAtIndex:(int)index
+{
+    if (rows > 0 && index >= 0 && index < rows)
+    {
+        Matrix *temp = [[Matrix alloc] initWithValue:[NSNumber numberWithDouble:0] andRows:(rows-1) byColumns:columns];
+        for (int r = 0; r < rows; r++)
+        {
+            if (r != index)
+            {
+                for (int c = 0; c < columns; c++)
+                {
+                    if (r > index)
+                    {
+                        [temp setElementAtRow:r-1 andColumn:c withObject:[self getElementAtRow:r andColumn:c]];
+                    }
+                    else
+                    {
+                        [temp setElementAtRow:r andColumn:c withObject:[self getElementAtRow:r andColumn:c]];
+                    }
+                }
+            }
+        }
+        return temp;
+    }
+    return nil;
+}
+
+-(Matrix *) removeColumnAtIndex:(int)index
+{
+    if (columns > 0 && index >= 0 && index < columns)
+    {
+        Matrix *temp = [[Matrix alloc] initWithValue:[NSNumber numberWithDouble:0] andRows:rows byColumns:(columns-1)];
+        for (int r = 0; r < rows; r++)
+        {
+            for (int c = 0; c < columns; c++)
+            {
+                if (c != index)
+                {
+                    if (c > index)
+                    {
+                        [temp setElementAtRow:r andColumn:c-1 withObject:[self getElementAtRow:r andColumn:c]];
+                    }
+                    else
+                    {
+                        [temp setElementAtRow:r andColumn:c withObject:[self getElementAtRow:r andColumn:c]];
+                    }
+                }
+            }
+        }
+        return temp;
+    }
+    return nil;
+}
+
 -(Matrix *) addMatrix:(Matrix *) m
 {
     if (rows == [m rows] && columns == [m columns])
@@ -365,6 +419,40 @@
         double avg = [[dif sumColumnAtIndex:0] doubleValue] / [dif rows];
         return [NSNumber numberWithDouble:(sqrt(avg))];
     }
+    return nil;
+}
+
+-(NSNumber *) getDeterminant
+{
+    /*if (rows == columns)
+    {
+        *//*Base case 2x2 matrix*//*
+        if (rows == 2 && columns == 2)
+        {
+            double a = [[self getElementAtRow:0 andColumn:0]doubleValue];
+            double b = [[self getElementAtRow:0 andColumn:1]doubleValue];
+            double c = [[self getElementAtRow:1 andColumn:0]doubleValue];
+            double d = [[self getElementAtRow:1 andColumn:1]doubleValue];
+            return [NSNumber numberWithDouble:(a*d - c*b)];
+            
+        }
+        
+        double det = 0;
+        for (int c = 0; c < [self columns]; c++)
+        {
+            //add
+            if (c % 2 == 0)
+            {
+                det += [[self getElementAtRow:0 andColumn:c] doubleValue] * [[self getSubMatrixFromRow:<#(int)#> toRow:<#(int)#> andFromColumn:<#(int)#> toColumn:<#(int)#>]getDeterminant];
+            }
+            //subtract
+            else
+            {
+                
+            }
+        }
+        
+    }*/
     return nil;
 }
 
