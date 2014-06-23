@@ -15,6 +15,8 @@
 * Matrix Print (Correctly prints a matrix to the console with timestamps)
 * Column Retrieval
 * Row Retrieval
+* Row Removal
+* Column Removal
 * Sub-Matrix Retrieval
 * Row Summation
 * Column Summation
