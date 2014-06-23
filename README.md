@@ -10,6 +10,8 @@
 * Matrix Subtraction
 * Matrix Multiplication
 * Matrix Transposition
+* Matrix Determinant
+* Matrix Inverse
 
 ####Other capabilities include:
 * Matrix Print (Correctly prints a matrix to the console with timestamps)
